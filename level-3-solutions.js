@@ -246,3 +246,72 @@ for (let i = 0; i < data.length; i++) {
   }
 }
 console.log(exo10_B);
+
+// =======================================EXO11======================================================================
+function EXO11(arr){
+  let exo11_1 = [];
+  for (let i = 0; i < data.length; i += 4) {
+    exo11_1.push(data.slice(i, i + 4));
+  }
+  return exo11_1;
+}
+
+console.log(EXO11(data));
+// =====================boucle====================
+
+function EXO11_2(arr){
+  const grpsExo11 = [];
+  let grpIndex = 0;
+  
+  for (let i = 0; i < data.length; i += 4) {
+    grpsExo11[grpIndex] = [];
+    
+    for (let j = 0; j < 4 && i + j < data.length; j++) {
+      grpsExo11[grpIndex][j] = data[i + j];
+    }
+  
+    grpIndex++;
+  }
+  return grpsExo11;
+}
+console.log(EXO11_2(data));
+
+// =======================================EXO12======================================================================
+function statistics(arr) {
+  const max = Math.max(...arr);
+  const min = Math.min(...arr);
+  const sum = arr.reduce((acc, n) => acc + n, 0);
+  const count = arr.length;
+  const avg = sum / count;
+
+  return { max, min, moyenne: avg, somme: sum, count };
+}
+
+console.log(statistics(data));
+// =====================boucle====================
+function statistics_2(arr) {
+  let max = arr[0];
+  let min = arr[0];
+  let sum = 0;
+  let count = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    const value = arr[i];
+    if (value > max) {
+      max = value;
+    }
+
+    if (value < min) {
+      min = value;
+    }
+
+    sum += value;
+
+    count++;
+  }
+
+  const avg = sum / count;
+
+  return { max, min, moyenne: avg, somme: sum, count };
+}
+console.log(statistics_2(data));
